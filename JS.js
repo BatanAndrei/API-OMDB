@@ -2,7 +2,7 @@ const apiKey = "da102ad5";
 const apiUrl = "https://www.omdbapi.com/";
 
 const form = document.querySelector('.searchForm');
-const resultWrapper = document.querySelector('.resultWrapper');
+const resultWrapper = document.querySelector('.resultWrapper'); // область отрисовки результата
 form.addEventListener('submit', submitForm);       //вешаем обработчик на всю форму(form) событие submit
 
 function submitForm(e){
@@ -34,10 +34,16 @@ function submitForm(e){
         }else{
             output.innerHTML = '<p>По вашему запросу ничего не нашлось</p>'; // в случае результата False
         }
+        showResultOutput();
       });
 }
 
 function clearResultOutput() {  // очищаем область показа запроса
+    resultWrapper.classList.remove("isShown");  //убираем класс isShown результата поиска у resultWrapper
     const output = resultWrapper.querySelector('.resultOutput');
     output.innerHTML = '';
 }
+
+function showResultOutput() {      //добавляем класс isShown результата поиска у resultWrapper
+    resultWrapper.classList.add("isShown");
+  }

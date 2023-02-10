@@ -8,7 +8,16 @@ form.addEventListener('submit', submitForm);       //вешаем обработ
 function submitForm(e){
     e.preventDefault();  // отключает дефолтные настройки, в данном случае отключает перезагрузку страницы при submit.
     const searchValue = form.querySelector('#searchInput').value; //значение поля search
-    fetch(`${apiUrl}?apikey=${apiKey}&s=${searchValue}`) //делаем запрос url, key, значение поля search
+    const typeValue = form.querySelector('#typeInput').value;  //значение поля select
+    const yearValue = form.querySelector('#yearInput').value;   //значение поля year
+
+    const params = new URLSearchParams(); //генерируем параметры URL через объект URLSearchParams()
+    params.append("apikey", apiKey);
+    params.append("s", searchValue);
+    params.append("type", typeValue);
+    params.append("y", yearValue);
+
+    fetch(`${apiUrl}?${params}`) //формируем запрос URL сгенерируемый через URLSearchParams()
       .then(data => data.json())
       .then(data => {
         clearResultOutput(); //чистим output после каждого запроса

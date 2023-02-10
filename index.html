@@ -10,10 +10,12 @@
 <body>
   <div class="wrapper">
     <h1>Поиск по базе фильмов OMDB</h1>
+
+
     <form class="searchForm">
       <div class="inputWrapper">
         <label for="searchInput">Поиск по названию:</label>
-        <input id="searchInput" type="search" class="input" required />
+        <input id="searchInput" type="search" class="input" required /> <!--поле обязательное (required)-->
       </div>
       <div class="inputWrapper">
         <label for="typeInput">Тип:</label>
@@ -29,7 +31,10 @@
       </div>
       <button type="submit">Поиск</button>
     </form>
+
     <hr />
+
+
     <div class="resultWrapper">
       <h2>Результаты поиска</h2>
       <div class="resultOutput"></div>
